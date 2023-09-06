@@ -98,7 +98,7 @@ export default {
     },
     login: async (req, res, next) => {
         try {
-            let user = await models.Usuario.findOne({email:req.body.email});
+            let user = await models.Usuario.findOne({email:req.body.email, estado:1});
             if (user) {
                 let match = await bcrypt.compare(req.body.password, user.password);
                 if (match) {
