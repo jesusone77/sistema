@@ -37,7 +37,7 @@ export default {
         try {
             let valor=req.query.valor;
             const reg = await models.Usuario.find({$or:[{'nombre': new RegExp(valor,'i')}, {'email': new RegExp(valor,'i')}]},{createdAt:0})
-            .populate('categoria',{nombre:1})
+            .populate('nombre',{nombre:1})
             .sort({'createdAt':-1});
             res.status(200).json(reg);
         } catch (error) {
